@@ -1,0 +1,28 @@
+{
+    "name": "thinkbim/huichuan-php-sdk",
+    "description": "超级汇川API",
+    "type": "library",
+    "keywords": [
+        "huichuan",
+        "guzzle",
+        "thinkphp"
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "guzzlehttp/guzzle": ">=6.2",
+        "topthink/framework": "^6.0.0"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "thinkbim",
+            "email": "thinkbim@thinkbim.cn"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ThinkBIM\\UCSDK\\": "src/"
+        }
+    }
+}
