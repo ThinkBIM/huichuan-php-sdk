@@ -4,7 +4,9 @@
 namespace ThinkBIM\UCSDK\Campaign;
 
 
-class Client
+use ThinkBIM\UCSDK\lib\BaseClient;
+
+class Client extends BaseClient
 {
 
 }

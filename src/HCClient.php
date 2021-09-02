@@ -29,30 +29,24 @@ class HCClient
         'order'    => \ThinkBIM\UCSDK\Order\Client::class,
     ];
 
-    public function __construct($target)
+    public function __construct($username, $password, $token, $target = null)
     {
-        // $this->setUsername();
-        // $this->setPassword($password);
-        // $this->setToken($token);
+        $this->setUsername($username);
+        $this->setPassword($password);
+        $this->setToken($token);
         $this->setTarget($target);
     }
 
     public function __get($name)
     {
-        if (!property_exists($this, $name)) {
-            // if (array_key_exists($name, $this->instances)) {
-            //     return $this->instances[$name];
-            // }
-            if (property_exists($this, 'providers') && array_key_exists($name, $this->providers)) {
-                $username = $this->getUsername();
-                $password = $this->getPassword();
-                $token = $this->getToken();
-                $target = $this->getTarget();
-                return new $this->providers[$name]($username, $password, $token, $target);
-            }
-
-            // throw new Exception("Undefined property $name", 500);
+        if (property_exists($this, 'providers') && array_key_exists($name, $this->providers)) {
+            $username = $this->getUsername();
+            $password = $this->getPassword();
+            $token = $this->getToken();
+            $target = $this->getTarget();
+            return new $this->providers[$name]($username, $password, $token, $target);
         }
+        // throw new Exception("Undefined property $name", 500);
     }
 
 
