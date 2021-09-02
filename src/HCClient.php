@@ -35,11 +35,7 @@ class HCClient
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        if (strpos(App::VERSION, '6.0') !== false) {
-            $this->config = array_merge($conf, Config::get('huichuan.') ?? [], $config);
-        } else {
-            $this->config = array_merge($conf, Config::get('jwt.') ?? [], $config);
-        }
+        $this->config = array_merge($conf, Config::get('huichuan') ?? [], $config);
         $this->setUsername($this->config['username']);
         $this->setPassword($this->config['password']);
         $this->setToken($this->config['token']);
