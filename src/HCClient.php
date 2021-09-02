@@ -3,7 +3,8 @@
 
 namespace ThinkBIM\UCSDK;
 
-use think\Config;
+use think\App;
+use think\facade\Config;
 use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
 /**
  * Class Client.
@@ -19,6 +20,8 @@ class HCClient
 {
     use HasSdkBaseInfo;
 
+    private $config;
+
     protected $providers = [
         'report'   => \ThinkBIM\UCSDK\Report\Client::class,
         'account'  => \ThinkBIM\UCSDK\Account\Client::class,
@@ -29,12 +32,18 @@ class HCClient
         'order'    => \ThinkBIM\UCSDK\Order\Client::class,
     ];
 
-    public function __construct($username, $password, $token, $target = null)
+    public function __construct(array $config = [])
     {
-        $this->setUsername($username);
-        $this->setPassword($password);
-        $this->setToken($token);
-        $this->setTarget($target);
+        $conf = require __DIR__.'/../config/config.php';
+        if (strpos(App::VERSION, '6.0') !== false) {
+            $this->config = array_merge($conf, Config::get('huichuan.') ?? [], $config);
+        } else {
+            $this->config = array_merge($conf, Config::get('jwt.') ?? [], $config);
+        }
+        $this->setUsername($this->config['username']);
+        $this->setPassword($this->config['password']);
+        $this->setToken($this->config['token']);
+        $this->setTarget($this->config['target']);
     }
 
     public function __get($name)
