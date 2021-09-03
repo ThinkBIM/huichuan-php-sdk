@@ -34,8 +34,11 @@ class HCClient
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        // $this->config = array_merge($conf['header'], Config::get('huichuan.header') ?? [], $config);
-        $this->config = array_merge($conf['header'], $config);
+        if(!$config) {
+            $this->config = array_merge($conf['header'], Config::get('huichuan.header') ?? [], $config);
+        }else{
+            $this->config = $config;
+        }
         $this->setUsername($this->config['username']);
         $this->setPassword($this->config['password']);
         $this->setToken($this->config['token']);

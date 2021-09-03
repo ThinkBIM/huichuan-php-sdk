@@ -7,6 +7,7 @@ return [
         'token' => '',
         'target' => ''
     ],
-    'log' => ''
-
+    'log' => [
+        'path' => '/Users/zhangcheng/WWW/huichuan-php-sdk/demo/huichuan',
+    ]
 ];

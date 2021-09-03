@@ -1,5 +1,6 @@
 /.idea
 /vendor
+/demo/demo.php
 composer.lock
 .env
 .DS_Store

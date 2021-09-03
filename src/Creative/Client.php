@@ -37,4 +37,32 @@ class Client extends BaseClient
         ];
         return $this->httpPostJson('creative/getCreativeByCreativeId', $params);
     }
+
+    /**
+     * 获取推广创意样式模板.
+     *
+     * @param array $adGroupId
+     *
+     * @return array
+     */
+    public function getTemplates(array $adGroupId)
+    {
+        $params = [
+            'adgroupId' => $adGroupId,
+        ];
+
+        return $this->httpPostJson('creative/getCreativeTemplate', $params);
+    }
+
+    /**
+     * 获取创意分类列表.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getCreativeIndustries()
+    {
+        return $this->httpPostJson('material/getCreativeIndustry');
+    }
 }

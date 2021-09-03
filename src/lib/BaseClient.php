@@ -15,6 +15,7 @@ class BaseClient
 
     protected $baseUri = 'https://e.uc.cn/api/';
 
+
     public function __construct($username, $password, $token, $target)
     {
         $this->setUsername($username);
@@ -68,12 +69,15 @@ class BaseClient
         if (property_exists($this, 'baseUri') && !is_null($this->baseUri)) {
             $options['base_uri'] = $this->baseUri;
         }
-
         $response = $this->getHttpClient()->request($method, $uri, $options);
         $content = $response->getBody()->getContents();
-
         $array = json_decode($content, true, 512, JSON_BIGINT_AS_STRING);
         if (JSON_ERROR_NONE === json_last_error()) {
+            if(!isset($array['header']['status']) || $array['header']['status'] != 0) {
+                MyLogger::log('info.log', '请求路径', [$uri]);
+                MyLogger::log('info.log', '请求参数', $options);
+                MyLogger::log('info.log', '错误响应', $array);
+            }
             return (array) $array;
         }
         return [];

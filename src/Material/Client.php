@@ -113,9 +113,12 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function getRecommend(array $params)
+    public function getRecommend(array $recommendFilter)
     {
-        return $this->httpPostJson('material/getRecommend', $params);
+        $params = [
+            'recommendFilter' => $recommendFilter
+        ];
+        return $this->httpPostJson('material/recommend', $params);
     }
 
     /**
@@ -187,7 +190,7 @@ class Client extends BaseClient
      */
     public function getAndroidApps()
     {
-        return $this->httpPostJson('material/getAndroidApp');
+        return $this->httpPostJson('material/getAndroidApps');
     }
 
     /**
