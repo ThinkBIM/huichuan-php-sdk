@@ -68,6 +68,7 @@ class BaseClient
         if (property_exists($this, 'baseUri') && !is_null($this->baseUri)) {
             $options['base_uri'] = $this->baseUri;
         }
+
         $response = $this->getHttpClient()->request($method, $uri, $options);
         $content = $response->getBody()->getContents();
 

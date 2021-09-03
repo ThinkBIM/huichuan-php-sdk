@@ -243,4 +243,30 @@ class Client extends BaseClient
     {
         return $this->httpPostJson('material/getCreativeIndustry');
     }
+
+    /**
+     * 获取建站列表
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getSites()
+    {
+        return $this->httpPostJson('material/getSite');
+    }
+
+
+    /**
+     * 获取人群包
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getAllPackages()
+    {
+        $this->baseUri = 'https://qianxing.uc.cn/dmp/';
+        return $this->httpPostJson('openapi/audience/getAllPackage');
+    }
 }

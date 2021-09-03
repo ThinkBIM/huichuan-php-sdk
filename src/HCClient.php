@@ -3,7 +3,6 @@
 
 namespace ThinkBIM\UCSDK;
 
-use think\App;
 use think\facade\Config;
 use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
 /**
@@ -35,7 +34,8 @@ class HCClient
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        $this->config = array_merge($conf, Config::get('huichuan') ?? [], $config);
+        // $this->config = array_merge($conf['header'], Config::get('huichuan.header') ?? [], $config);
+        $this->config = array_merge($conf['header'], $config);
         $this->setUsername($this->config['username']);
         $this->setPassword($this->config['password']);
         $this->setToken($this->config['token']);

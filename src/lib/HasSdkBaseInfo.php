@@ -24,6 +24,10 @@ trait HasSdkBaseInfo
      */
     protected $target;
 
+    protected $isLog = true;
+
+    protected $logPath;
+
     /**
      * @return string
      */

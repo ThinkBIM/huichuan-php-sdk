@@ -14,7 +14,7 @@ class Client extends BaseClient
      */
     public function getAccount()
     {
-        return $this->httpPostJson('account/getAccount');
+        return $this->httpPostJson('/account/getAccount');
     }
 
     /**

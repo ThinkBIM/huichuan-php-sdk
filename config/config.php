@@ -1,8 +1,12 @@
 <?php
 
 return [
-    'username' => '',
-    'password' => '',
-    'token' => '',
-    'target' => ''
+    'header' => [
+        'username' => '',
+        'password' => '',
+        'token' => '',
+        'target' => ''
+    ],
+    'log' => ''
+
 ];
