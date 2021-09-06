@@ -65,162 +65,112 @@ class Client extends BaseClient
     /**
      * 更新推广计划的状态.
      *
-     * @param array $campaignIds
-     * @param bool  $paused
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updatePaused(array $campaignIds, $paused)
+    public function updatePaused(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'paused'      => $paused,
-        ];
-
         return $this->httpPostJson('campaign/paused/update', $params);
     }
 
     /**
      * 更新推广计划的地域.
      *
-     * @param array $campaignIds
-     * @param int   $allRegion
-     * @param int[] $region
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateRegion(array $campaignIds, $allRegion, array $region = [])
+    public function updateRegion(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'allRegion'   => $allRegion,
-            'region'      => $region,
-        ];
-
         return $this->httpPostJson('campaign/region/update', $params);
     }
 
     /**
      * 更新推广计划网络环境.
      *
-     * @param array  $campaignIds
-     * @param string $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateNetworkEnv(array $campaignIds, $target)
+    public function updateNetworkEnv(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/network/update', $params);
     }
 
     /**
      * 更新推广计划的年龄.
      *
-     * @param array  $campaignIds
-     * @param number $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateAge(array $campaignIds, $target)
+    public function updateAge(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/age/update', $params);
     }
 
     /**
      * 更新推广计划的性别.
      *
-     * @param array  $campaignIds
-     * @param number $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateGender(array $campaignIds, $target)
+    public function updateGender(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/gender/update', $params);
     }
 
     /**
      * 更新推广计划的投放平台.
      *
-     * @param array  $campaignIds
-     * @param number $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updatePlatform(array $campaignIds, $target)
+    public function updatePlatform(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/platform/update', $params);
     }
 
     /**
      * 更新推广计划的转化过滤.
      *
-     * @param array  $campaignIds
-     * @param number $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateConvertFilter(array $campaignIds, $target)
+    public function updateConvertFilter(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/convertfilter/update', $params);
     }
 
     /**
      * 更新推广计划的转化过滤.
      *
-     * @param array  $campaignIds
-     * @param number $target
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateIntelli(array $campaignIds, $target)
+    public function updateIntelli(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'target'      => $target,
-        ];
-
         return $this->httpPostJson('campaign/intelli/update', $params);
     }
 
@@ -241,22 +191,14 @@ class Client extends BaseClient
     /**
      * 更新推广计划的预算.
      *
-     * @param array  $campaignIds
-     * @param number $budget
-     * @param bool   $forceBudget
+     * @param array  $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateBudget(array $campaignIds, $budget, $forceBudget)
+    public function updateBudget(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-            'budget'      => $budget,
-            'forceBudget' => $forceBudget,
-        ];
-
         return $this->httpPostJson('campaign/budget/update', $params);
     }
 
@@ -277,72 +219,56 @@ class Client extends BaseClient
     /**
      * 申请理赔.
      *
-     * @param array $campaignIds
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function triggerPaid(array $campaignIds)
+    public function triggerPaid(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-        ];
-
         return $this->httpPostJson('campaign/triggerPaid', $params);
     }
 
     /**
      * 开启安心投.
      *
-     * @param array $campaignIds
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateAnxt(array $campaignIds)
+    public function updateAnxt(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-        ];
-
         return $this->httpPostJson('campaign/updateAnxt', $params);
     }
 
     /**
      * 开启超级巡量.
      *
-     * @param array $campaignIds
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateAutoTargeting(array $campaignIds)
+    public function updateAutoTargeting(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-        ];
-
         return $this->httpPostJson('campaign/autoTargeting/update', $params);
     }
 
     /**
      * 开启橙心投.
      *
-     * @param array $campaignIds
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function updateChengxt(array $campaignIds)
+    public function updateChengxt(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-        ];
-
         return $this->httpPostJson('campaign/updateChengxt', $params);
     }
 
@@ -355,12 +281,8 @@ class Client extends BaseClient
      *
      * @return array
      */
-    public function delete(array $campaignIds)
+    public function delete(array $params)
     {
-        $params = [
-            'campaignIds' => $campaignIds,
-        ];
-
         return $this->httpPostJson('campaign/delete', $params);
     }
 
