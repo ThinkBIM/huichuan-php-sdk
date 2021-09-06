@@ -55,6 +55,19 @@ try {
 
 ```
 
+## 模块
+
+模块|执行对象
+---|---
+账户|$clent->account 完成
+推广组|$clent->group 完成
+推广计划|$clent->campaign 完成
+推广创意|$clent->creative 完成
+素材|$clent->material 完成
+数据报表|$clent->report 未完成
+订单|$clent->order 未完成
+
+
 
 ## 参考
 
