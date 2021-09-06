@@ -15,4 +15,38 @@ class Client extends BaseClient
     {
         return $this->httpPostJson('adgroup/getAllAdGroup');
     }
+
+    /**
+     * 更新推广组状态.
+     *
+     * @param array $adGroupIds
+     * @param bool  $paused
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function updatePaused(array $adGroupIds, $paused)
+    {
+        $params = [
+            'adGroupIds' => $adGroupIds,
+            'paused'     => $paused,
+        ];
+
+        return $this->httpPostJson('adgroup/paused/update', $params);
+    }
+
+    /**
+     * 更新推广组.
+     *
+     * @param array $params
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function update(array $params)
+    {
+        return $this->httpPostJson('adgroup/update', $params);
+    }
 }
