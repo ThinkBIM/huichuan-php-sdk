@@ -8,40 +8,13 @@ use ThinkBIM\UCSDK\lib\BaseClient;
 
 class Client extends BaseClient
 {
-    /**
-     * 新增推广创意
-     * @param $creativeType
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
-     *
-     * @return array
-     */
-    public function addCreative($creativeType)
-    {
-        $params['creativeTypes'][] = $creativeType;
-        return $this->httpPostJson('creative/add', $params);
-    }
 
     /**
-     * 根据指定的创意id获取推广创意
-     * @param array $creativeIds
+     * 创建推广创意.
+     *
+     * @param $adGroupId
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
-     *
-     * @return array
-     */
-    public function getCreativeByCreativeId(array $creativeIds)
-    {
-        $params = [
-            'creativeIds' => $creativeIds,
-        ];
-        return $this->httpPostJson('creative/getCreativeByCreativeId', $params);
-    }
-
-    /**
-     * 获取推广创意样式模板.
-     *
-     * @param array $adGroupId
      *
      * @return array
      */
@@ -52,6 +25,126 @@ class Client extends BaseClient
         ];
 
         return $this->httpPostJson('creative/getCreativeTemplate', $params);
+    }
+
+    /**
+     * 创建推广创意.
+     *
+     * @param $params
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function add(array $params)
+    {
+        return $this->httpPostJson('creative/add', $params);
+    }
+
+    /**
+     * 更新推广创意.
+     *
+     * @param $params
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function update(array $params)
+    {
+        return $this->httpPostJson('creative/update', $params);
+    }
+
+    /**
+     * 更新推广创意的状态.
+     *
+     * @param $creativeIds
+     * @param bool $paused
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function updatePaused(array $creativeIds, $paused)
+    {
+        $params = [
+            'adGroupIds' => $creativeIds,
+            'paused'     => $paused,
+        ];
+
+        return $this->httpPostJson('creative/paused/update', $params);
+    }
+
+    /**
+     * 删除推广创意.
+     *
+     * @param $creativeIds
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function delete(array $creativeIds)
+    {
+        $params = [
+            'creativeIds' => $creativeIds,
+        ];
+
+        return $this->httpPostJson('creative/delete', $params);
+    }
+
+    /**
+     * 根据推广计划id获取推广创意.
+     *
+     * @param $campaignIds
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getByCampaignIds(array $campaignIds)
+    {
+        $params = [
+            'campaignIds' => $campaignIds,
+        ];
+
+        return $this->httpPostJson('creative/getCreativeByCampaignId', $params);
+    }
+
+    /**
+     * 根据推广计划id获取推广创意id.
+     *
+     * @param $campaignIds
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getIdsByCampaignIds(array $campaignIds)
+    {
+        $params = [
+            'campaignIds' => $campaignIds,
+        ];
+
+        return $this->httpPostJson('creative/getCreativeIdByCampaignId', $params);
+    }
+
+    /**
+     * 根据推广创意id获取推广创意.
+     *
+     * @param $creativeIds
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getByIds(array $creativeIds)
+    {
+        $params = [
+            'creativeIds' => $creativeIds,
+        ];
+
+        return $this->httpPostJson('creative/getCreativeByCreativeId', $params);
     }
 
     /**
