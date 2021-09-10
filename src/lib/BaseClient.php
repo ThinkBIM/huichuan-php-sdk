@@ -14,8 +14,8 @@ class BaseClient
 
     protected $httpClient;
 
-    protected $baseUri = 'https://e.uc.cn/api/';
-    // protected $baseUri = 'https://e.uc.cn/shc/api/';
+    // protected $baseUri = 'https://e.uc.cn/api/';
+    protected $baseUri = 'https://e.uc.cn/shc/api/';
 
     public function __construct($username, $password, $token, $target, $log, $file)
     {

@@ -13,6 +13,7 @@ use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
  * @property \ThinkBIM\UCSDK\Campaign\Client $campaign
  * @property \ThinkBIM\UCSDK\Creative\Client $creative
  * @property \ThinkBIM\UCSDK\Material\Client $material
+ * @property \ThinkBIM\UCSDK\Adconvert\Client $adconvert
  * @property \ThinkBIM\UCSDK\Order\Client $order
  * @property \ThinkBIM\UCSDK\Dmp\Client $dmp
  */
@@ -27,6 +28,7 @@ class HCClient
         'campaign' => \ThinkBIM\UCSDK\Campaign\Client::class,
         'creative' => \ThinkBIM\UCSDK\Creative\Client::class,
         'material' => \ThinkBIM\UCSDK\Material\Client::class,
+        'adconvert'    => \ThinkBIM\UCSDK\Adconvert\Client::class,
         'order'    => \ThinkBIM\UCSDK\Order\Client::class,
         'dmp'    => \ThinkBIM\UCSDK\Dmp\Client::class,
     ];
@@ -34,7 +36,7 @@ class HCClient
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        $conf = array_merge($conf, Config::get('huichuan.') ?? []);
+        $conf = array_merge($conf, Config::get('huichuan') ?? []);
         $conf['header'] = array_merge($conf['header'], $config);
         $this->setUsername($conf['header']['username']);
         $this->setPassword($conf['header']['password']);

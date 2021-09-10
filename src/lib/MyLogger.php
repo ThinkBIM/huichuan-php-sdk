@@ -7,12 +7,14 @@ namespace ThinkBIM\UCSDK\lib;
 use Monolog\Handler\FirePHPHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
+use think\facade\Config;
 
 class MyLogger
 {
     public static function log($file, $message = '', $content = [], $name = '')
     {
         $conf = require __DIR__.'/../../config/config.php';
+        $conf = array_merge($conf, Config::get('huichuan') ?? []);
         $path = trim($name.'/'.date('Ymd').'/'.$file, '/');
         $filePath = rtrim($conf['logPath'], '/');
         // 创建日志服务

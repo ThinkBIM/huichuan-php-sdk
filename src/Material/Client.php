@@ -69,6 +69,22 @@ class Client extends BaseClient
     }
 
     /**
+     * 获取视频封面图.
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getVideoCovers(array $videoIds)
+    {
+        $params = [
+            'videoIds' => $videoIds
+        ];
+        return $this->httpPostJson('material/getVideoCovers', $params);
+    }
+
+
+    /**
      * 获取省市列表.
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -148,7 +164,7 @@ class Client extends BaseClient
             'objectiveType' => $objectiveType,
         ];
 
-        return $this->httpPostJson('material/getConvertTypes', $params);
+        return $this->httpPostJson('material/getConvertType', $params);
     }
 
     /**
