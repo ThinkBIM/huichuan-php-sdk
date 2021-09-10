@@ -20,14 +20,13 @@ composer require thinkbim/huichuan-php-sdk
 
 return [
     'header' => [
-        'username' => '', //账户名称
-        'password' => '', //账户密码
-        'token' => '',   //授权token
-        'target' => ''  //代理商品
+        'username' => '账户名称',
+        'password' => '账户密码',
+        'token' => '授权token',
+        'target' => '代理商'
     ],
-    'log' => [
-        'path' => 'huichuan', //错误日志记录
-    ]
+    'logPath' => '接口请求目录',
+    'filePath' => '报表下载目录'
 ];
 ```
 
@@ -64,8 +63,10 @@ try {
 推广计划|$clent->campaign 完成
 推广创意|$clent->creative 完成
 素材|$clent->material 完成
-数据报表|$clent->report 未完成
+数据报表|$clent->report 完成
+人群|$clent->dmp 完成
 订单|$clent->order 未完成
+
 
 
 
