@@ -270,16 +270,25 @@ class Client extends BaseClient
      * @param bool   $adReport
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Exception
      *
-     * @return array
      */
-    public function downloadFile($taskId, $adReport = true)
+    public function downloadFile($filename, $taskId, $adReport = true, $replace = false)
     {
+        $filePath = rtrim($this->getFilePath(), '/');
+
+        if($replace) {
+            if(file_exists($filePath . '/' . $filename)) {
+                return $filePath .'/'. $filename;
+            }
+        }
+        if(!is_dir(dirname($filePath.'/'.$filename))) {
+            mkdir(dirname($filePath.'/'.$filename) , 0777, true);
+        }
         $params = [
             'taskId'   => $taskId,
             'adReport' => $adReport,
         ];
-
-        return $this->httpPostJson('report/downloadFile', $params);
+        return $this->httpCsvFile('report/downloadFile', $params, $filePath.'/'.$filename);
     }
 }

@@ -14,12 +14,11 @@ use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
  * @property \ThinkBIM\UCSDK\Creative\Client $creative
  * @property \ThinkBIM\UCSDK\Material\Client $material
  * @property \ThinkBIM\UCSDK\Order\Client $order
+ * @property \ThinkBIM\UCSDK\Dmp\Client $dmp
  */
 class HCClient
 {
     use HasSdkBaseInfo;
-
-    private $config;
 
     protected $providers = [
         'report'   => \ThinkBIM\UCSDK\Report\Client::class,
@@ -29,16 +28,22 @@ class HCClient
         'creative' => \ThinkBIM\UCSDK\Creative\Client::class,
         'material' => \ThinkBIM\UCSDK\Material\Client::class,
         'order'    => \ThinkBIM\UCSDK\Order\Client::class,
+        'dmp'    => \ThinkBIM\UCSDK\Dmp\Client::class,
     ];
 
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        $this->config = array_merge($conf['header'], Config::get('huichuan.header') ?? [], $config);
-        $this->setUsername($this->config['username']);
-        $this->setPassword($this->config['password']);
-        $this->setToken($this->config['token']);
-        $this->setTarget($this->config['target']);
+        // $this->config = array_merge($conf['header'], Config::get('huichuan.header') ?? [], $config);
+        $conf['header'] = array_merge($conf['header'], $config);
+
+        // print_r($this->config);die;
+        $this->setUsername($conf['header']['username']);
+        $this->setPassword($conf['header']['password']);
+        $this->setToken($conf['header']['token']);
+        $this->setTarget($conf['header']['target']);
+        $this->setLogPath($conf['logPath']);
+        $this->setFilePath($conf['filePath']);
     }
 
     public function __get($name)
@@ -48,7 +53,7 @@ class HCClient
             $password = $this->getPassword();
             $token = $this->getToken();
             $target = $this->getTarget();
-            return new $this->providers[$name]($username, $password, $token, $target);
+            return new $this->providers[$name]($username, $password, $token, $target,$this->getLogPath(), $this->getFilePath());
         }
         // throw new Exception("Undefined property $name", 500);
     }

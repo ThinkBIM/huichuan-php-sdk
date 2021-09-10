@@ -24,9 +24,9 @@ trait HasSdkBaseInfo
      */
     protected $target;
 
-    protected $isLog = true;
-
     protected $logPath;
+
+    protected $filePath;
 
     /**
      * @return string
@@ -90,6 +90,38 @@ trait HasSdkBaseInfo
     protected function setTarget($target)
     {
         $this->target = $target;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getLogPath()
+    {
+        return $this->logPath;
+    }
+
+    /**
+     * @param string $logPath
+     */
+    protected function setLogPath($logPath)
+    {
+        $this->logPath = $logPath;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getFilePath()
+    {
+        return $this->filePath;
+    }
+
+    /**
+     * @param string $filePath
+     */
+    protected function setFilePath($filePath)
+    {
+        $this->filePath = $filePath;
     }
 
 

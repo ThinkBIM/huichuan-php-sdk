@@ -6,6 +6,7 @@ namespace ThinkBIM\UCSDK\lib;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class BaseClient
 {
@@ -14,14 +15,16 @@ class BaseClient
     protected $httpClient;
 
     protected $baseUri = 'https://e.uc.cn/api/';
+    // protected $baseUri = 'https://e.uc.cn/shc/api/';
 
-
-    public function __construct($username, $password, $token, $target)
+    public function __construct($username, $password, $token, $target, $log, $file)
     {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setToken($token);
         $this->setTarget($target);
+        $this->setLogPath($log);
+        $this->setFilePath($file);
     }
 
     public function setHttpClient(ClientInterface $httpClient)
@@ -46,6 +49,40 @@ class BaseClient
     public function httpPostFile($url, $files)
     {
         return $this->request($url, 'POST', ['multipart' => $files]);
+    }
+
+    public function  httpCsvFile($uri, $data, $filename)
+    {
+        $authorization = $this->getAuthorization();
+        $options['json'] = [
+            'header' => $authorization,
+            'body'   => $data,
+        ];
+        $options['debug'] = true;
+        $options['sink'] = $filename;
+        $options['on_headers'] = function (ResponseInterface $response) use($options){
+            MyLogger::log('info.log', 'Content-Length', $response->getHeader('Content-Length'));
+            MyLogger::log('info.log', 'options', $options);
+            if (empty($response->getHeaderLine('Content-Type')) || strpos($response->getHeaderLine('Content-Type'), 'octet-stream') === false) {
+                throw new \Exception('接口返回错误!');
+            }
+            // if ($response->getHeaderLine('Content-Length') == 1561) {
+            //     // throw new \Exception('参数错误');
+            // }
+            // if ($response->getHeaderLine('Content-Length') == 1561) {
+            //     // throw new \Exception('参数错误');
+            // }
+        };
+        $options = $this->fixJsonIssue($options);
+        if (property_exists($this, 'baseUri') && !is_null($this->baseUri)) {
+            $options['base_uri'] = $this->baseUri;
+        }
+
+        $this->getHttpClient()->request('POST', $uri, $options);
+        if(!file_exists($filename)) {
+            throw new \Exception('文件创建失败');
+        }
+        return $options['sink'];
     }
 
     public function request($uri, $method='POST', $options)
@@ -74,7 +111,7 @@ class BaseClient
         $array = json_decode($content, true, 512, JSON_BIGINT_AS_STRING);
         if (JSON_ERROR_NONE === json_last_error()) {
             if(!isset($array['header']['status']) || $array['header']['status'] != 0) {
-                MyLogger::log('info.log', '请求路径', [$uri]);
+                MyLogger::log('info.log', '请求地址', [$this->baseUri.$uri]);
                 MyLogger::log('info.log', '请求参数', $options);
                 MyLogger::log('info.log', '错误响应', $array);
             }
