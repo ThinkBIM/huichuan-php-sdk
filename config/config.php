@@ -7,6 +7,6 @@ return [
         'token' => '',//授权token
         'target' => ''//代理商下的子账户
     ],
-    'logPath' => '',//Log记录目录
-    'filePath' => ''//报表下载目录
+    'logPath' => '/tmp',//Log记录目录
+    'filePath' => '/tmp'//报表下载目录
 ];
