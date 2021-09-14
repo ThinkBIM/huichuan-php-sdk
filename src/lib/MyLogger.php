@@ -14,8 +14,10 @@ class MyLogger
     public static function log($file, $message = '', $content = [], $name = '')
     {
         $conf = require __DIR__.'/../../config/config.php';
-        if(class_exists('Config')) {
-            $conf = array_merge($conf, Config::get('huichuan') ?? []);
+        try{
+            $conf = array_merge($conf, Config::get('huichuan', []));
+        }catch (\Exception $e) {
+
         }
         $path = trim($name.'/'.date('Ymd').'/'.$file, '/');
         $filePath = rtrim($conf['logPath'], '/');

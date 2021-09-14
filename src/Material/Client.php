@@ -274,4 +274,16 @@ class Client extends BaseClient
     {
         return $this->httpPostJson('material/getSite');
     }
+
+    /**
+     * 获取头像列表
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getLogos()
+    {
+        return $this->httpPostJson('material/getLogo');
+    }
 }

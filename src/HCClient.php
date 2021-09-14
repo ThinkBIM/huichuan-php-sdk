@@ -3,6 +3,7 @@
 
 namespace ThinkBIM\UCSDK;
 
+use GuzzleHttp\Exception\TransferException;
 use think\facade\Config;
 use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
 /**
@@ -36,12 +37,11 @@ class HCClient
     public function __construct(array $config = [])
     {
         $conf = require __DIR__.'/../config/config.php';
-        if(class_exists('Config')) {
-            $conf = array_merge($conf, Config::get('huichuan') ?? []);
-        }else{
+        try{
+            $conf = array_merge($conf, Config::get('huichuan', []));
+        }catch (\Exception $e) {
             $conf['header'] = array_merge($conf['header'], $config);
         }
-        $conf['header'] = $config;
         $this->setUsername($conf['header']['username']);
         $this->setPassword($conf['header']['password']);
         $this->setToken($conf['header']['token']);
