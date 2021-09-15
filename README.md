@@ -67,6 +67,8 @@ try {
 转化追踪|$clent->adconvert 完成
 人群|$clent->dmp 完成
 订单|$clent->order 未完成
+KR工具|$clent->kr 完成
+钉钉排名服务|$clent->strateg 未完成
 
 
 
