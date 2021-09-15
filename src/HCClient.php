@@ -17,6 +17,8 @@ use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
  * @property \ThinkBIM\UCSDK\Adconvert\Client $adconvert
  * @property \ThinkBIM\UCSDK\Order\Client $order
  * @property \ThinkBIM\UCSDK\Dmp\Client $dmp
+ * @property \ThinkBIM\UCSDK\Kr\Client $kr
+ * @property \ThinkBIM\UCSDK\Strategy\Client $strategy
  */
 class HCClient
 {
@@ -32,6 +34,8 @@ class HCClient
         'adconvert'    => \ThinkBIM\UCSDK\Adconvert\Client::class,
         'order'    => \ThinkBIM\UCSDK\Order\Client::class,
         'dmp'    => \ThinkBIM\UCSDK\Dmp\Client::class,
+        'kr'    => \ThinkBIM\UCSDK\Kr\Client::class,
+        'strategy' => \ThinkBIM\UCSDK\Strategy\Client::class,
     ];
 
     public function __construct(array $config = [])

@@ -89,7 +89,11 @@ class BaseClient
     {
         $authorization = $this->getAuthorization();
         if (!empty($options['multipart'])) {
-            $options['multipart']['header'] = json_encode($authorization);
+            $options['multipart'][] = [
+                'name' => 'header',
+                'contents' => json_encode($authorization)
+            ];
+            // $options['multipart']['header'] = json_encode($authorization);
         } else {
             if (empty($options['json'])) {
                 $options['json']['header'] = $authorization;
