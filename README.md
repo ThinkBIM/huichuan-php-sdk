@@ -23,7 +23,8 @@ return [
         'username' => '账户名称',
         'password' => '账户密码',
         'token' => '授权token',
-        'target' => '代理商下的子账户'
+        'target' => '代理商下的子账户',
+        'source' => '请求api来源'
     ],
     'logPath' => 'Log记录目录',
     'filePath' => '报表下载目录'
@@ -66,9 +67,10 @@ try {
 数据报表|$clent->report 完成
 转化追踪|$clent->adconvert 完成
 人群|$clent->dmp 完成
+组件|$clent->component 未完成
 订单|$clent->order 未完成
 KR工具|$clent->kr 完成
-钉钉排名服务|$clent->strateg 未完成
+钉钉排名|$clent->strateg 未完成
 
 
 
