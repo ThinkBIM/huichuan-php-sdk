@@ -7,6 +7,23 @@ use ThinkBIM\UCSDK\lib\BaseClient;
 class Client extends BaseClient
 {
     /**
+     * 新增推广组.
+     *
+     * @param array $adGroupTypes
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function add(array $adGroupTypes)
+    {
+        $params = [
+            'AdGroupTypes' => $adGroupTypes
+        ];
+        return $this->httpPostJson('adgroup/add', $params);
+    }
+
+    /**
      * 获取username下所有的推广组\
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @return array

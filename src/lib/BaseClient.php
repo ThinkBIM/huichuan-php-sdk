@@ -17,12 +17,13 @@ class BaseClient
     // protected $baseUri = 'https://e.uc.cn/api/';
     protected $baseUri = 'https://e.uc.cn/shc/api/';
 
-    public function __construct($username, $password, $token, $target, $log, $file)
+    public function __construct($username, $password, $token, $target, $source, $log, $file)
     {
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setToken($token);
         $this->setTarget($target);
+        $this->setSource($source);
         $this->setLogPath($log);
         $this->setFilePath($file);
     }

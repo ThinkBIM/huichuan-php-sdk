@@ -9,7 +9,7 @@ use ThinkBIM\UCSDK\lib\BaseClient;
 class Client extends BaseClient
 {
     /**
-     * 根据推广计划推荐关键词
+     * 根据推广计划推荐关键词.
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @return array
      */

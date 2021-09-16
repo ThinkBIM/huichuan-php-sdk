@@ -9,14 +9,17 @@ class Client extends BaseClient
     /**
      * 创建推广计划.
      *
-     * @param array $params
+     * @param array $campaignType
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function add(array $params)
+    public function add(array $campaignType)
     {
+        $params = [
+            'campaignTypes' => $campaignType
+        ];
         return $this->httpPostJson('campaign/add', $params);
     }
 

@@ -12,7 +12,7 @@ class Client extends BaseClient
     /**
      * 创建推广创意.
      *
-     * @param $adGroupId
+     * @param array $adGroupId
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -30,21 +30,24 @@ class Client extends BaseClient
     /**
      * 创建推广创意.
      *
-     * @param $params
+     * @param array $creativeType
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function add(array $params)
+    public function add(array $creativeType)
     {
+        $params = [
+            'creativeTypes' => $creativeType
+        ];
         return $this->httpPostJson('creative/add', $params);
     }
 
     /**
      * 更新推广创意.
      *
-     * @param $params
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -58,7 +61,7 @@ class Client extends BaseClient
     /**
      * 更新推广创意的状态.
      *
-     * @param $creativeIds
+     * @param  array$creativeIds
      * @param bool $paused
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
@@ -78,7 +81,7 @@ class Client extends BaseClient
     /**
      * 删除推广创意.
      *
-     * @param $creativeIds
+     * @param array $creativeIds
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -96,7 +99,7 @@ class Client extends BaseClient
     /**
      * 根据推广计划id获取推广创意.
      *
-     * @param $campaignIds
+     * @param array $campaignIds
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -114,7 +117,7 @@ class Client extends BaseClient
     /**
      * 根据推广计划id获取推广创意id.
      *
-     * @param $campaignIds
+     * @param array $campaignIds
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -132,7 +135,7 @@ class Client extends BaseClient
     /**
      * 根据推广创意id获取推广创意.
      *
-     * @param $creativeIds
+     * @param array $creativeIds
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *

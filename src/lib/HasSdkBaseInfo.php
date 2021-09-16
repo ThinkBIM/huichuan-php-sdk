@@ -24,6 +24,8 @@ trait HasSdkBaseInfo
      */
     protected $target;
 
+    protected $source;
+
     protected $logPath;
 
     protected $filePath;
@@ -92,6 +94,15 @@ trait HasSdkBaseInfo
         $this->target = $target;
     }
 
+    protected function getSource()
+    {
+        return $this->source;
+    }
+
+    protected function setSource($source)
+    {
+        $this->source = $source;
+    }
     /**
      * @return string
      */
@@ -137,6 +148,10 @@ trait HasSdkBaseInfo
         ];
         if($this->target) {
             $auth['target'] = $this->getTarget();
+        }
+
+        if($this->source) {
+            $auth['source'] = $this->getSource();
         }
         return $auth;
     }

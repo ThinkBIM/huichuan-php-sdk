@@ -10,7 +10,7 @@ class Client extends BaseClient
 {
     /**
      * 批量创建激活api、sdk转化.
-     * @param $params
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
@@ -23,7 +23,7 @@ class Client extends BaseClient
 
     /**
      * 创建sdk
-     * @param $params
+     * @param array $params
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *

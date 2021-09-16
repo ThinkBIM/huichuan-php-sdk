@@ -19,6 +19,7 @@ use ThinkBIM\UCSDK\lib\HasSdkBaseInfo;
  * @property \ThinkBIM\UCSDK\Dmp\Client $dmp
  * @property \ThinkBIM\UCSDK\Kr\Client $kr
  * @property \ThinkBIM\UCSDK\Strategy\Client $strategy
+ * @property \ThinkBIM\UCSDK\Component\Client $component
  */
 class HCClient
 {
@@ -36,6 +37,7 @@ class HCClient
         'dmp'    => \ThinkBIM\UCSDK\Dmp\Client::class,
         'kr'    => \ThinkBIM\UCSDK\Kr\Client::class,
         'strategy' => \ThinkBIM\UCSDK\Strategy\Client::class,
+        'component' => \ThinkBIM\UCSDK\Component\Client::class
     ];
 
     public function __construct(array $config = [])
@@ -50,6 +52,7 @@ class HCClient
         $this->setPassword($conf['header']['password']);
         $this->setToken($conf['header']['token']);
         $this->setTarget($conf['header']['target']);
+        $this->setSource($conf['header']['source']);
         $this->setLogPath($conf['logPath']);
         $this->setFilePath($conf['filePath']);
     }
@@ -61,7 +64,8 @@ class HCClient
             $password = $this->getPassword();
             $token = $this->getToken();
             $target = $this->getTarget();
-            return new $this->providers[$name]($username, $password, $token, $target,$this->getLogPath(), $this->getFilePath());
+            $source = $this->getSource();
+            return new $this->providers[$name]($username, $password, $token, $target, $source, $this->getLogPath(), $this->getFilePath());
         }
         // throw new Exception("Undefined property $name", 500);
     }
