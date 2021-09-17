@@ -45,6 +45,7 @@ class HCClient
         $conf = require __DIR__.'/../config/config.php';
         try{
             $conf = array_merge($conf, Config::get('huichuan', []));
+            $conf['header'] = array_merge($conf['header'], $config);
         }catch (\Exception $e) {
             $conf['header'] = array_merge($conf['header'], $config);
         }
