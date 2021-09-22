@@ -26,8 +26,6 @@ class MyLogger
         // 添加一些处理器
         $logger->pushHandler(new StreamHandler($filePath .'/'.$path, Logger::INFO));
         $logger->pushHandler(new FirePHPHandler());
-
-        // 现在你就可以用日志服务了
         $logger->info($message, $content);
     }
 }

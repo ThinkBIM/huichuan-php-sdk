@@ -12,19 +12,19 @@ class Client extends BaseClient
     /**
      * 创建推广创意.
      *
-     * @param array $adGroupId
+     * @param int $adGroupId
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return array
      */
-    public function getTemplates(array $adGroupId)
+    public function getTemplates(int $adGroupId)
     {
         $params = [
-            'adgroupId' => $adGroupId,
+            'adGroupId' => $adGroupId,
         ];
 
-        return $this->httpPostJson('creative/getCreativeTemplate', $params);
+        return $this->httpPostJson('creative/getCreativeTemplates', $params);
     }
 
     /**
