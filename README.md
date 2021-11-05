@@ -70,7 +70,7 @@ try {
 组件|$clent->component 未完成
 订单|$clent->order 未完成
 KR工具|$clent->kr 完成
-钉钉排名|$clent->strateg 未完成
+钉钉排名|$clent->strateg 完成
 
 
 
