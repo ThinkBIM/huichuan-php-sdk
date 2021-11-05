@@ -1,6 +1,7 @@
 # huichuan-php-sdk
 
-
+基于ThinkPHP框架，用户超级汇川投放。
+按照官方文档实时同步。
 
 ## 安装
 
