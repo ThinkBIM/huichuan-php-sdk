@@ -68,8 +68,6 @@ class HCClient
             $source = $this->getSource();
             return new $this->providers[$name]($username, $password, $token, $target, $source, $this->getLogPath(), $this->getFilePath());
         }
-        // throw new Exception("Undefined property $name", 500);
+        throw new \Exception("Undefined property $name", 500);
     }
-
-
 }

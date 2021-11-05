@@ -244,6 +244,35 @@ class Client extends BaseClient
     // 猎户销售线索报告
 
     /**
+     * 获取策略层级报表.
+     *
+     * @param array $params
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getStrategyReports(array $params)
+    {
+        return $this->httpPostJson('strategyService/getStrategyKeywords', $params);
+    }
+
+    /**
+     * 获取策略层级关键词报表.
+     *
+     * @param array $params
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return array
+     */
+    public function getStrategyKeywordReports(array $params)
+    {
+        return $this->httpPostJson('strategyService/getStrategyKeywordReport', $params);
+    }
+
+
+    /**
      * 查询下载任务状态.
      *
      * @param number $taskId
