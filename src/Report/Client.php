@@ -4,6 +4,7 @@
 namespace ThinkBIM\UCSDK\Report;
 
 
+use GuzzleHttp\Exception\GuzzleException;
 use ThinkBIM\UCSDK\lib\BaseClient;
 
 class Client extends BaseClient
@@ -13,7 +14,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -27,7 +28,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -41,7 +42,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -55,7 +56,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -69,7 +70,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -83,7 +84,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -97,7 +98,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -111,7 +112,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -125,7 +126,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -141,7 +142,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -155,7 +156,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -169,7 +170,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -183,7 +184,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -199,7 +200,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -213,7 +214,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -229,7 +230,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -248,7 +249,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -262,7 +263,7 @@ class Client extends BaseClient
      *
      * @param array $params
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
@@ -278,11 +279,11 @@ class Client extends BaseClient
      * @param number $taskId
      * @param bool   $adReport
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
-    public function getFile($taskId, $adReport = true)
+    public function getFile($taskId, $adReport = true): array
     {
         $params = [
             'taskId'   => $taskId,
@@ -298,7 +299,7 @@ class Client extends BaseClient
      * @param number $taskId
      * @param bool   $adReport
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @throws \Exception
      *
      */

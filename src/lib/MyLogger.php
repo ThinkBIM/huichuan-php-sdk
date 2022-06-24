@@ -11,7 +11,14 @@ use think\facade\Config;
 
 class MyLogger
 {
-    public static function log($file, $message = '', $content = [], $name = '')
+    /**
+     * @param $file
+     * @param string $message
+     * @param array $content
+     * @param string $name
+     * @return void
+     */
+    public static function log($file, string $message = '', array $content = [], string $name = '')
     {
         $conf = require __DIR__.'/../../config/config.php';
         try{

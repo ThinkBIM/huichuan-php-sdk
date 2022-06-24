@@ -6,6 +6,7 @@ namespace ThinkBIM\UCSDK\lib;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
 
 class BaseClient
@@ -28,13 +29,13 @@ class BaseClient
         $this->setFilePath($file);
     }
 
-    public function setHttpClient(ClientInterface $httpClient)
+    public function setHttpClient(ClientInterface $httpClient): BaseClient
     {
         $this->httpClient = $httpClient;
         return $this;
     }
 
-    public function getHttpClient()
+    public function getHttpClient(): Client
     {
         if (!$this->httpClient) {
             $this->httpClient = new Client();
@@ -42,12 +43,24 @@ class BaseClient
         return $this->httpClient;
     }
 
-    public function httpPostJson($url, $data=[])
+    /**
+     * @param string $url
+     * @param array $data
+     * @return array
+     * @throws GuzzleException
+     */
+    public function httpPostJson(string $url, array $data=[]): array
     {
         return $this->request($url, 'POST', ['json' => $data]);
     }
 
-    public function httpPostFile($url, $files)
+    /**
+     * @param $url
+     * @param $files
+     * @return array
+     * @throws GuzzleException
+     */
+    public function httpPostFile($url, $files): array
     {
         return $this->request($url, 'POST', ['multipart' => $files]);
     }
@@ -79,14 +92,25 @@ class BaseClient
             $options['base_uri'] = $this->baseUri;
         }
 
-        $this->getHttpClient()->request('POST', $uri, $options);
-        if(!file_exists($filename)) {
-            throw new \Exception('文件创建失败');
+        try {
+            $this->getHttpClient()->request('POST', $uri, $options);
+            if(!file_exists($filename))
+                throw new \Exception('文件创建失败');
+        } catch (GuzzleException $e) {
+
         }
+
         return $options['sink'];
     }
 
-    public function request($uri, $method='POST', $options)
+    /**
+     * @param $uri
+     * @param $method
+     * @param $options
+     * @return array
+     * @throws GuzzleException
+     */
+    public function request($uri, $method='POST', $options): array
     {
         $authorization = $this->getAuthorization();
         if (!empty($options['multipart'])) {
@@ -126,11 +150,11 @@ class BaseClient
     }
 
 
-    protected function fixJsonIssue(array $options)
+    protected function fixJsonIssue(array $options): array
     {
         if (isset($options['json']) && is_array($options['json'])) {
             $options['headers'] = array_merge(
-                isset($options['headers']) ? $options['headers'] : [],
+                $options['headers'] ?? [],
                 ['Content-Type' => 'application/json']
             );
             if (empty($options['json'])) {

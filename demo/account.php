@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Exception\GuzzleException as GuzzleExceptionAlias;
 use ThinkBIM\UCSDK\HCClient;
 
 require "../vendor/autoload.php";
@@ -12,5 +13,9 @@ $client = new HCClient([
 ]);
 
 //获取当前账户管家或者代理商下的子账户列表
-$client->account->getChildrenAccountByAccountId();
+try {
+    $client->account->getChildrenAccountByAccountId();
+} catch (GuzzleExceptionAlias $e) {
+
+}
 

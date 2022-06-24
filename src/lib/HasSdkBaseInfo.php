@@ -33,7 +33,7 @@ trait HasSdkBaseInfo
     /**
      * @return string
      */
-    protected function getUsername()
+    protected function getUsername(): string
     {
         return $this->username;
     }
@@ -41,7 +41,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $username
      */
-    protected function setUsername($username)
+    protected function setUsername(string $username)
     {
         $this->username = $username;
     }
@@ -49,7 +49,7 @@ trait HasSdkBaseInfo
     /**
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -57,7 +57,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $password
      */
-    public function setPassword($password)
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
@@ -65,7 +65,7 @@ trait HasSdkBaseInfo
     /**
      * @return string
      */
-    protected function getToken()
+    protected function getToken(): string
     {
         return $this->token;
     }
@@ -73,7 +73,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $token
      */
-    protected function setToken($token)
+    protected function setToken(string $token)
     {
         $this->token = $token;
     }
@@ -89,7 +89,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $target
      */
-    protected function setTarget($target)
+    protected function setTarget(string $target)
     {
         $this->target = $target;
     }
@@ -106,7 +106,7 @@ trait HasSdkBaseInfo
     /**
      * @return string
      */
-    protected function getLogPath()
+    protected function getLogPath(): string
     {
         return $this->logPath;
     }
@@ -114,7 +114,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $logPath
      */
-    protected function setLogPath($logPath)
+    protected function setLogPath(string $logPath)
     {
         $this->logPath = $logPath;
     }
@@ -122,7 +122,7 @@ trait HasSdkBaseInfo
     /**
      * @return string
      */
-    protected function getFilePath()
+    protected function getFilePath(): string
     {
         return $this->filePath;
     }
@@ -130,7 +130,7 @@ trait HasSdkBaseInfo
     /**
      * @param string $filePath
      */
-    protected function setFilePath($filePath)
+    protected function setFilePath(string $filePath)
     {
         $this->filePath = $filePath;
     }
@@ -139,7 +139,7 @@ trait HasSdkBaseInfo
     /**
      * @return array
      */
-    protected function getAuthorization()
+    protected function getAuthorization(): array
     {
         $auth = [
             'username' => $this->getUsername(),

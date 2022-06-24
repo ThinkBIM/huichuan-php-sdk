@@ -4,6 +4,7 @@
 namespace ThinkBIM\UCSDK\Order;
 
 
+use GuzzleHttp\Exception\GuzzleException;
 use ThinkBIM\UCSDK\lib\BaseClient;
 
 class Client extends BaseClient
@@ -13,11 +14,11 @@ class Client extends BaseClient
      *
      * @param array $orderIds
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
-    public function getByIds(array $orderIds)
+    public function getByIds(array $orderIds): array
     {
         $params = [
             'orderIds' => $orderIds,
@@ -32,11 +33,11 @@ class Client extends BaseClient
      * @param string $startDate
      * @param string $endDate
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
-    public function get($startDate, $endDate)
+    public function get($startDate, $endDate): array
     {
         $params = [
             'startDate' => $startDate,
@@ -52,11 +53,11 @@ class Client extends BaseClient
      * @param string $startDate
      * @param string $endDate
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return array
      */
-    public function getIds($startDate, $endDate)
+    public function getIds($startDate, $endDate): array
     {
         $params = [
             'startDate' => $startDate,

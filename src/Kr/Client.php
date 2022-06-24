@@ -4,6 +4,7 @@
 namespace ThinkBIM\UCSDK\Kr;
 
 
+use GuzzleHttp\Exception\GuzzleException;
 use ThinkBIM\UCSDK\lib\BaseClient;
 
 class Client extends BaseClient
@@ -11,10 +12,10 @@ class Client extends BaseClient
     /**
      * 根据推广计划推荐关键词.
      * @param array $params
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      * @return array
      */
-    public function getByCampaignId(array $params)
+    public function getByCampaignId(array $params): array
     {
         return $this->httpPostJson('kr/getKRByCampaignId', $params);
     }
@@ -26,9 +27,9 @@ class Client extends BaseClient
      *
      * @return array
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
-    public function getByQuery(array $params)
+    public function getByQuery(array $params): array
     {
         return $this->httpPostJson('kr/getKRByQuery', $params);
     }
